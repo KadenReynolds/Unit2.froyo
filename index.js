@@ -5,25 +5,32 @@ const flavours = {
   coffee: 0,
 }
 
+function flavourSplit(flavourArray){
+  for(let i = 0; i < flavourArray.length; i++){
+    if (flavourArray[i] === "vanilla"){
+      flavours.vanilla += 1
+    }
+    else if (flavourArray[i] === "chocolate"){
+      flavours.chocolate += 1
+    }
+    else if (flavourArray[i] === "strawberry"){
+      flavours.strawberry += 1
+    }
+    else if (flavourArray[i] === "coffee"){
+      flavours.coffee += 1
+    }
+  }
+  return flavours
+}
+
+
 const flavourInput = prompt(
   "Please enter froyo flavors seperated by commas.",
   "vanilla,strawberry,chocolate,coffee"
 );
 let flavourArray = flavourInput.split(",")
-for(let i = 0; i < flavourArray.length; i++){
-  if (flavourArray[i] === "vanilla"){
-    flavours.vanilla += 1
-  }
-  else if (flavourArray[i] === "chocolate"){
-    flavours.chocolate += 1
-  }
-  else if (flavourArray[i] === "strawberry"){
-    flavours.strawberry += 1
-  }
-  else if (flavourArray[i] === "coffee"){
-    flavours.coffee += 1
-  }
-}
+
+let flavoursPostSplit = flavourSplit(flavourArray)
 
 totalFlavours = 0
 
@@ -31,4 +38,4 @@ for(const key in flavours){
   totalFlavours += flavours[key]
 }
 console.log(`You have a total of ${totalFlavours} froyo's on the way!`)
-console.table(flavours)
+console.table(flavoursPostSplit)
